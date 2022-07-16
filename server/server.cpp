@@ -3,14 +3,13 @@
 int Client::m_epollfd = -1;
 int Client::m_user_count = 0;
 
-//主线程维护users数组保存http连接对象以及它的一个定时器
-Server::Server():m_port(9005),m_thread_num(16)
+//构造函数
+Server::Server():m_port(9005),m_thread_num(8)
 {
     users = new Client[MAX_FD];
     //线程池
     m_pool = new threadpool<Client>(m_thread_num);
 
-    //网络编程基础步骤
     m_listenfd = socket(PF_INET, SOCK_STREAM, 0);
     assert(m_listenfd >= 0);
 
@@ -464,7 +463,7 @@ void clearCommand(string&, string&, bool&)
 void initCommand()
 {
     commands["set"] = &setCommand;
-	commands["get"] = &getCommand;
+    commands["get"] = &getCommand;
     commands["del"] = &delCommand;
     commands["load"] = &loadCommand;
     commands["dump"] = &dumpCommand;
