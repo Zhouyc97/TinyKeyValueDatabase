@@ -7,7 +7,7 @@ make
 
 cd client/  
 make  
-.client ip port(9005)  
+./client ip port(9005)  
 
 
 
