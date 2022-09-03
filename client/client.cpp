@@ -33,7 +33,7 @@ int main(int argc,char* argv[])
     int res = connect(sockfd,(struct sockaddr*)&saddr,sizeof(saddr));
     assert(res != -1);
 
-    cout<<"Select an input from the following five commands:"<<endl;
+    cout<<"Select an input from the following eight commands:"<<endl;
     cout<<"set key value, del key, get key, load, dump, show, clear, quit"<<endl;
     while(true)
     {
